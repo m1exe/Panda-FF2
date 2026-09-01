@@ -1906,7 +1906,7 @@
           "ammo regen": "1",
           "max health additive penalty": "-155",
           "deploy time decreased": "0",
-          "reduced_healing_from_medics": "0"
+          "reduced_healing_from_medics": "0",
           "dmg taken from bullets reduced": "0.75"
         },
         "custom": {
