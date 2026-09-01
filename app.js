@@ -281,6 +281,10 @@ function describeWeaponAttribute(name, value, custom = false){
     return row("Shield charge impact damage", multiplierPercent(n), "", multiplierKind(n));
   }
 
+  if(key === "damage taken from bullets reduced" && n !== null){
+    return row("Bullet Resistance", multiplierPercent(n), "", multiplierKind(n));
+  }
+  
   // ---------------------------------------------------------------
   // Damage taken / knockback
   // ---------------------------------------------------------------
