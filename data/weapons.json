@@ -1711,7 +1711,7 @@
     "ff2Changes": [
       {
         "attributes": {
-          "charge impact damage increased": "7",
+          "charge impact damage increased": "7"
         },
         "source": "classname",
         "sourceKey": "tf_weapon_stickbomb",
