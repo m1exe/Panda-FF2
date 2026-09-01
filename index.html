@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#24231f">
   <title>Panda FF2 · Wikipedia</title>
-  <link rel="stylesheet" href="style.css?v=20260902-0010">
+  <link rel="stylesheet" href="style.css?v=20260902-0130">
 </head>
 <body>
   <header class="site-header">
@@ -345,8 +345,8 @@
               <div>
                 <strong>Ghosting exception for prolonged delaying</strong>
                 <p>
-                  When certain players have been camping for an extended time (or an Engineer's base is the last player or 
-                  group of players left in VSH and they are clearly waiting for the Boss) 
+                  When certain players have been camping for an extended time (or an Engineer's base is the last player or
+                  group of players left in VSH and they are clearly waiting for the Boss)
                   and giving their position away serves to move the game along.
                 </p>
               </div>
@@ -386,20 +386,58 @@
     <section id="changelog" class="view">
       <div class="section-head changelog-head">
         <div>
-          <p class="eyebrow">COMMUNITY NOTES</p>
+          <p class="eyebrow">UPDATE HISTORY</p>
           <h2>Changelog</h2>
-          <p>Boss, weapon and gameplay changes collected from Panda's FF2 forum.</p>
+          <p>Browse Panda FF2 boss, weapon, gameplay and map changes by update.</p>
         </div>
 
-        <div class="filters" aria-label="Changelog filters">
-          <button class="filter-btn active" data-change-filter="all">All</button>
-          <button class="filter-btn" data-change-filter="boss">Bosses</button>
-          <button class="filter-btn" data-change-filter="weapon">Weapons</button>
-          <button class="filter-btn" data-change-filter="gameplay">Gameplay</button>
+        <input
+          id="changelog-search"
+          class="search"
+          placeholder="Search changes..."
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="changelog-toolbar">
+        <div class="changelog-filter-block">
+          <span class="changelog-filter-label">Category</span>
+          <div class="filters" aria-label="Changelog category filters">
+            <button class="filter-btn active" data-change-filter="all">All</button>
+            <button class="filter-btn" data-change-filter="weapon">Weapons</button>
+            <button class="filter-btn" data-change-filter="boss">Bosses</button>
+            <button class="filter-btn" data-change-filter="gameplay">Gameplay</button>
+            <button class="filter-btn" data-change-filter="maps">Maps</button>
+          </div>
+        </div>
+
+        <div class="changelog-filter-block">
+          <span class="changelog-filter-label">Change type</span>
+          <div class="filters" aria-label="Changelog action filters">
+            <button class="filter-btn active" data-action-filter="all">All types</button>
+            <button class="filter-btn" data-action-filter="added">Added</button>
+            <button class="filter-btn" data-action-filter="changed">Changed</button>
+            <button class="filter-btn" data-action-filter="fixed">Fixed</button>
+            <button class="filter-btn" data-action-filter="removed">Removed</button>
+            <button class="filter-btn" data-action-filter="reference">Reference</button>
+          </div>
         </div>
       </div>
 
-      <div id="changelog-list" class="change-list"></div>
+      <div id="changelog-latest"></div>
+
+      <div class="changelog-result-meta">
+        <div>
+          <strong id="changelog-result-count">0</strong>
+          <span>changes shown</span>
+        </div>
+        <div>
+          <strong id="changelog-update-count">0</strong>
+          <span>updates shown</span>
+        </div>
+      </div>
+
+      <div id="changelog-list" class="change-timeline"></div>
 
       <div class="reference-card">
         <strong>Current FF2 Weapon Changes</strong>
@@ -446,6 +484,6 @@
     <span>Team Fortress 2 and related trademarks belong to their respective owners.</span>
   </footer>
 
-  <script type="module" src="app.js?v=20260820-1755"></script>
+  <script type="module" src="app.js?v=20260902-0130"></script>
 </body>
 </html>
