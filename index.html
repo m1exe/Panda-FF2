@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#24231f">
   <title>Panda FF2 · Wikipedia</title>
-  <link rel="stylesheet" href="style.css?v=20260820-1625">
+  <link rel="stylesheet" href="style.css?v=20260902-0010">
 </head>
 <body>
   <header class="site-header">
@@ -21,6 +21,7 @@
         <button class="nav-btn" data-view="bosses">Bosses</button>
         <button class="nav-btn" data-view="maps">Maps</button>
         <button class="nav-btn" data-view="commands">Commands</button>
+        <button class="nav-btn" data-view="rules">Rules</button>
         <button class="nav-btn" data-view="changelog">Changelog</button>
         <button class="nav-btn" data-view="analyzer">CFG Analyzer</button>
       </nav>
@@ -92,6 +93,11 @@
         <button class="home-card" data-view-link="commands">
           <strong>Commands</strong>
           <span>Useful player and server commands.</span>
+        </button>
+
+        <button class="home-card rules-home-card" data-view-link="rules">
+          <strong>Rules</strong>
+          <span>Quick reference for Panda FF2 server rules.</span>
         </button>
 
         <button class="home-card" data-view-link="changelog">
@@ -237,6 +243,144 @@
       </div>
 
       <div id="command-list" class="command-list"></div>
+    </section>
+
+    <section id="rules" class="view">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">SERVER GUIDELINES</p>
+          <h2>Rules</h2>
+          <p>
+            A quick player-friendly summary of the rules most relevant to
+            Panda Freak Fortress 2.
+          </p>
+        </div>
+      </div>
+
+      <div class="rules-notice">
+        <strong>Important:</strong>
+        This page is a simplified FF2 reference. Panda Community's official
+        gameserver rules always take priority if anything here is incomplete
+        or becomes outdated.
+      </div>
+
+      <div class="rules-layout">
+        <article class="rules-card">
+          <div class="rules-card-head">
+            <span class="rules-card-kicker">GENERAL</span>
+            <h3>Panda Gameserver Rules</h3>
+          </div>
+
+          <p class="rules-card-intro">
+            The general Panda gameserver Code of Conduct applies on Freak
+            Fortress 2 as well. This page focuses on the additional rules and
+            situations that are especially relevant to FF2.
+          </p>
+
+          <div class="rules-general-note">
+            General rules covering player conduct, griefing, exploiting,
+            punishment evasion and other server-wide behaviour should be
+            checked in the official Panda rules thread.
+          </div>
+
+          <a
+            class="rules-source-link"
+            href="https://www.panda-community.com/threads/gameserver-rules-15-02-2026.3409/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open official gameserver rules
+          </a>
+        </article>
+
+        <article class="rules-card ff2-rules-card">
+          <div class="rules-card-head">
+            <span class="rules-card-kicker">SERVER #13</span>
+            <h3>Freak Fortress 2</h3>
+          </div>
+
+          <div class="rule-list">
+            <div class="rule-item">
+              <span class="rule-number">01</span>
+              <div>
+                <strong>No camping or delaying as the Boss</strong>
+                <p>
+                  If you are selected as the Boss, actively play the round and
+                  engage the RED team instead of intentionally delaying it.
+                </p>
+                <small>
+                  Don't want to be selected? Use <code>!ff2toggle</code>.
+                </small>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-number">02</span>
+              <div>
+                <strong>No teaming</strong>
+                <p>
+                  Play for your own side. RED should damage the Boss and help
+                  the team, while the Boss should actively fight RED.
+                </p>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-number">03</span>
+              <div>
+                <strong>Spectate when AFK</strong>
+                <p>
+                  If you need to go away from the game, join Spectator instead
+                  of remaining spawned in the round.
+                </p>
+                <small>
+                  AFK players can increase the Boss's health and leave more work
+                  for active teammates.
+                </small>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-number">04</span>
+              <div>
+                <strong>Ghosting exception for prolonged delaying</strong>
+                <p>
+                  Normal ghosting rules still apply. An exception may be made
+                  when revealing a player who has been camping for an extended
+                  period helps move an otherwise stalled round along.
+                </p>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-number">05</span>
+              <div>
+                <strong>RED camping depends on the class</strong>
+                <p>
+                  Camping rules for RED are class-dependent. Check the official
+                  Panda rules thread for the exact class-specific restrictions
+                  and exceptions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="rules-source">
+        <div>
+          <strong>Official source</strong>
+          <span>Panda Community · Gameserver Rules</span>
+        </div>
+
+        <a
+          href="https://www.panda-community.com/threads/gameserver-rules-15-02-2026.3409/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View current rules ↗
+        </a>
+      </div>
     </section>
 
     <section id="changelog" class="view">
