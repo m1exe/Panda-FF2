@@ -1184,28 +1184,286 @@ function renderCommands(query = ""){
 }
 
 let activeChangeFilter = "all";
+let activeActionFilter = "all";
+let changelogSearchQuery = "";
 
-function renderChangelog(filter = activeChangeFilter){
-  activeChangeFilter = filter;
+function normalizeChangeCategory(value){
+  const key = String(value || "").trim().toLowerCase();
+  if(key === "bosses") return "boss";
+  if(key === "weapons") return "weapon";
+  if(key === "map") return "maps";
+  return key || "other";
+}
 
-  const list = changelog
-    .filter(entry => filter === "all" || entry.type === filter)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+function inferLegacyChangeAction(entry){
+  const text = `${entry?.title || ""} ${entry?.summary || ""}`.toLowerCase();
 
-  document.querySelector("#changelog-list").innerHTML = list.map(entry => `
-    <article class="change-card" data-type="${escapeAttr(entry.type)}">
-      <div class="change-top">
-        <div>
-          <span class="change-type">${escapeHtml(entry.type)}</span>
-          ${entry.status ? `<span class="change-type">${escapeHtml(entry.status)}</span>` : ""}
+  if(/\bre-?added\b|\badded\b|\bintroduced\b/.test(text)) return "added";
+  if(/\bremoved\b|\bremoval\b/.test(text)) return "removed";
+  if(/\bfixed\b|\bfix\b/.test(text)) return "fixed";
+  if(String(entry?.status || "").toLowerCase() === "reference") return "reference";
+  return "changed";
+}
+
+function normalizeChangelogData(data){
+  const list = Array.isArray(data) ? data : [];
+
+  return list.map((entry, index) => {
+    if(Array.isArray(entry?.changes)){
+      return {
+        date: String(entry.date || ""),
+        title: String(entry.title || `Update ${index + 1}`),
+        status: String(entry.status || ""),
+        source: String(entry.source || ""),
+        changes: entry.changes.map(change => ({
+          type: normalizeChangeCategory(change?.type),
+          action: String(change?.action || "changed").toLowerCase(),
+          title: String(change?.title || "Change"),
+          description: String(change?.description || change?.summary || "")
+        }))
+      };
+    }
+
+    return {
+      date: String(entry?.date || ""),
+      title: String(entry?.title || `Update ${index + 1}`),
+      status: String(entry?.status || ""),
+      source: String(entry?.source || ""),
+      changes: [{
+        type: normalizeChangeCategory(entry?.type),
+        action: inferLegacyChangeAction(entry),
+        title: String(entry?.title || "Change"),
+        description: String(entry?.summary || "")
+      }]
+    };
+  }).sort((a, b) => new Date(`${b.date}T00:00:00`) - new Date(`${a.date}T00:00:00`));
+}
+
+const changelogUpdates = normalizeChangelogData(changelog);
+
+function changeActionMeta(action){
+  const normalized = String(action || "changed").toLowerCase();
+
+  const meta = {
+    added:     { symbol: "+", label: "Added" },
+    changed:   { symbol: "~", label: "Changed" },
+    fixed:     { symbol: "✓", label: "Fixed" },
+    removed:   { symbol: "−", label: "Removed" },
+    reference: { symbol: "i", label: "Reference" }
+  };
+
+  return meta[normalized] || { symbol: "•", label: prettyChangeLabel(normalized) };
+}
+
+function prettyChangeLabel(value){
+  const text = String(value || "other").replace(/[_-]+/g, " ");
+  return text.replace(/\b\w/g, char => char.toUpperCase());
+}
+
+function categoryDisplayName(type){
+  const names = {
+    weapon: "Weapons",
+    boss: "Bosses",
+    gameplay: "Gameplay",
+    maps: "Maps",
+    other: "Other"
+  };
+  return names[normalizeChangeCategory(type)] || prettyChangeLabel(type);
+}
+
+function isHttpUrl(value){
+  return /^https?:\/\//i.test(String(value || "").trim());
+}
+
+function filterChangelogUpdates(){
+  const q = changelogSearchQuery.toLowerCase().trim();
+
+  return changelogUpdates.map(update => {
+    const updateSearchText = `
+      ${update.date}
+      ${update.title}
+      ${update.status}
+      ${update.source}
+    `.toLowerCase();
+
+    const updateMatchesQuery = q && updateSearchText.includes(q);
+
+    const changes = update.changes.filter(change => {
+      const categoryMatches =
+        activeChangeFilter === "all" ||
+        normalizeChangeCategory(change.type) === activeChangeFilter;
+
+      const actionMatches =
+        activeActionFilter === "all" ||
+        String(change.action || "").toLowerCase() === activeActionFilter;
+
+      if(!categoryMatches || !actionMatches) return false;
+      if(!q || updateMatchesQuery) return true;
+
+      const changeSearchText = `
+        ${change.type}
+        ${categoryDisplayName(change.type)}
+        ${change.action}
+        ${change.title}
+        ${change.description}
+      `.toLowerCase();
+
+      return changeSearchText.includes(q);
+    });
+
+    return { ...update, changes };
+  }).filter(update => update.changes.length);
+}
+
+function renderLatestChangelogUpdate(){
+  const target = document.querySelector("#changelog-latest");
+  if(!target) return;
+
+  const latest = changelogUpdates[0];
+
+  if(!latest){
+    target.innerHTML = "";
+    return;
+  }
+
+  const categoryCounts = latest.changes.reduce((counts, change) => {
+    const type = normalizeChangeCategory(change.type);
+    counts[type] = (counts[type] || 0) + 1;
+    return counts;
+  }, {});
+
+  const categoryBadges = Object.entries(categoryCounts).map(([type, count]) => `
+    <span class="latest-change-stat" data-type="${escapeAttr(type)}">
+      <strong>${escapeHtml(count)}</strong>
+      ${escapeHtml(categoryDisplayName(type))}
+    </span>
+  `).join("");
+
+  target.innerHTML = `
+    <article class="latest-change-card">
+      <div class="latest-change-main">
+        <div class="latest-change-topline">
+          <span class="latest-change-label">Latest update</span>
+          ${latest.status ? `<span class="latest-change-status">${escapeHtml(latest.status)}</span>` : ""}
         </div>
-        <time class="change-date" datetime="${escapeAttr(entry.date)}">${escapeHtml(formatDate(entry.date))}</time>
+
+        <time datetime="${escapeAttr(latest.date)}">${escapeHtml(formatDate(latest.date))}</time>
+        <h3>${escapeHtml(latest.title)}</h3>
+
+        <div class="latest-change-stats">
+          <span class="latest-change-stat total">
+            <strong>${latest.changes.length}</strong>
+            ${latest.changes.length === 1 ? "Change" : "Changes"}
+          </span>
+          ${categoryBadges}
+        </div>
       </div>
-      <h3>${escapeHtml(entry.title)}</h3>
-      <p>${escapeHtml(entry.summary)}</p>
-      ${entry.source ? `<a href="${escapeAttr(entry.source)}" target="_blank" rel="noreferrer">Forum source</a>` : ""}
+
+      <button class="latest-change-jump" type="button" data-changelog-jump>
+        View update ↓
+      </button>
     </article>
-  `).join("") || `<div class="empty-state">No changelog entries in this category yet.</div>`;
+  `;
+}
+
+function renderChangelog(){
+  const list = filterChangelogUpdates();
+  const target = document.querySelector("#changelog-list");
+  if(!target) return;
+
+  renderLatestChangelogUpdate();
+
+  const totalChanges = list.reduce((sum, update) => sum + update.changes.length, 0);
+  const changeCounter = document.querySelector("#changelog-result-count");
+  const updateCounter = document.querySelector("#changelog-update-count");
+
+  if(changeCounter) changeCounter.textContent = totalChanges;
+  if(updateCounter) updateCounter.textContent = list.length;
+
+  const filtering =
+    changelogSearchQuery.trim() ||
+    activeChangeFilter !== "all" ||
+    activeActionFilter !== "all";
+
+  target.innerHTML = list.map((update, updateIndex) => {
+    const groups = update.changes.reduce((result, change) => {
+      const type = normalizeChangeCategory(change.type);
+      if(!result[type]) result[type] = [];
+      result[type].push(change);
+      return result;
+    }, {});
+
+    const categoryOrder = ["weapon", "boss", "gameplay", "maps", "other"];
+    const orderedTypes = [
+      ...categoryOrder.filter(type => groups[type]?.length),
+      ...Object.keys(groups).filter(type => !categoryOrder.includes(type))
+    ];
+
+    const sourceHtml = update.source
+      ? isHttpUrl(update.source)
+        ? `<a class="change-update-source" href="${escapeAttr(update.source)}" target="_blank" rel="noreferrer">View source ↗</a>`
+        : `<span class="change-update-source-note">Source: ${escapeHtml(update.source)}</span>`
+      : "";
+
+    const shouldOpen = filtering || updateIndex === 0;
+
+    return `
+      <details class="change-update" ${shouldOpen ? "open" : ""}>
+        <summary class="change-update-summary">
+          <div class="change-update-date">
+            <span>${escapeHtml(formatDate(update.date))}</span>
+            ${update.status ? `<small>${escapeHtml(update.status)}</small>` : ""}
+          </div>
+
+          <div class="change-update-heading">
+            <h3>${escapeHtml(update.title)}</h3>
+            <span>
+              ${update.changes.length}
+              ${update.changes.length === 1 ? "change" : "changes"}
+            </span>
+          </div>
+
+          <span class="change-update-chevron" aria-hidden="true">⌄</span>
+        </summary>
+
+        <div class="change-update-body">
+          ${orderedTypes.map(type => `
+            <section class="change-category-group" data-type="${escapeAttr(type)}">
+              <div class="change-category-title">
+                <span>${escapeHtml(categoryDisplayName(type))}</span>
+                <small>${groups[type].length}</small>
+              </div>
+
+              <div class="change-entry-list">
+                ${groups[type].map(change => {
+                  const action = changeActionMeta(change.action);
+                  return `
+                    <article class="change-entry" data-action="${escapeAttr(change.action)}">
+                      <span class="change-action-symbol" aria-hidden="true">${escapeHtml(action.symbol)}</span>
+
+                      <div class="change-entry-copy">
+                        <div class="change-entry-title-row">
+                          <span class="change-action-label">${escapeHtml(action.label)}</span>
+                          <strong>${escapeHtml(change.title)}</strong>
+                        </div>
+                        ${change.description ? `<p>${escapeHtml(change.description)}</p>` : ""}
+                      </div>
+                    </article>
+                  `;
+                }).join("")}
+              </div>
+            </section>
+          `).join("")}
+
+          ${sourceHtml ? `<div class="change-update-footer">${sourceHtml}</div>` : ""}
+        </div>
+      </details>
+    `;
+  }).join("") || `
+    <div class="empty-state">
+      No changelog entries match the current search and filters.
+    </div>
+  `;
 }
 
 document.querySelector("#weapon-search").addEventListener("input", e => {
@@ -1255,12 +1513,42 @@ document.addEventListener("keydown", e => {
 
 document.querySelector("#command-search").addEventListener("input", e => renderCommands(e.target.value));
 
+document.querySelector("#changelog-search")?.addEventListener("input", e => {
+  changelogSearchQuery = e.target.value;
+  renderChangelog();
+});
+
 document.querySelectorAll("[data-change-filter]").forEach(btn => {
   btn.addEventListener("click", () => {
+    activeChangeFilter = btn.dataset.changeFilter;
+
     document.querySelectorAll("[data-change-filter]").forEach(
       b => b.classList.toggle("active", b === btn)
     );
-    renderChangelog(btn.dataset.changeFilter);
+
+    renderChangelog();
+  });
+});
+
+document.querySelectorAll("[data-action-filter]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    activeActionFilter = btn.dataset.actionFilter;
+
+    document.querySelectorAll("[data-action-filter]").forEach(
+      b => b.classList.toggle("active", b === btn)
+    );
+
+    renderChangelog();
+  });
+});
+
+document.querySelector("#changelog-latest")?.addEventListener("click", e => {
+  const button = e.target.closest("[data-changelog-jump]");
+  if(!button) return;
+
+  document.querySelector("#changelog-list")?.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
   });
 });
 
