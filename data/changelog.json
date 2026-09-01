@@ -1,98 +1,176 @@
 [
   {
     "date": "2026-08-17",
-    "type": "Maps",
+    "title": "Map Rotation Update",
     "status": "Completed",
-    "title": "Maps Update",
-    "summary": "Maps added: vsh_chemical_v1, vsh_farm_feud_rc2_panda, vsh_leak, vsh_north_mountain_pb_panda, vsh_portal_v2, Updated maps: vsh_oh_multimaps_b1_panda2",
-    "source": "Discord Post"
+    "source": "Discord Post",
+    "changes": [
+      {
+        "type": "maps",
+        "action": "added",
+        "title": "New maps added",
+        "description": "Added vsh_chemical_v1, vsh_farm_feud_rc2_panda, vsh_leak, vsh_north_mountain_pb_panda and vsh_portal_v2."
+      },
+      {
+        "type": "maps",
+        "action": "changed",
+        "title": "Map updated",
+        "description": "Updated vsh_oh_multimaps_b1_panda2."
+      }
+    ]
   },
   {
     "date": "2026-05-22",
-    "type": "boss",
-    "status": "Completed",
     "title": "Blitzkrieg removal",
-    "summary": "The Panda FF2 removal proposal for The Blitzkrieg was marked completed, removing the boss from the active roster.",
-    "source": "https://www.panda-community.com/tags/ff2/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/tags/ff2/",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "removed",
+        "title": "The Blitzkrieg",
+        "description": "The Panda FF2 removal proposal for The Blitzkrieg was marked completed, removing the boss from the active roster."
+      }
+    ]
   },
   {
     "date": "2026-05-06",
-    "type": "boss",
-    "status": "Completed",
     "title": "Hatsune Miku re-added",
-    "summary": "The Hatsune Miku re-suggestion was marked completed. The published design uses Scout movement, a Saxxy, Super Jump and a DCP-based ability system.",
-    "source": "https://www.panda-community.com/threads/ff2-hatsune-miku-re-suggestion.38287/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/threads/ff2-hatsune-miku-re-suggestion.38287/",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "added",
+        "title": "Hatsune Miku",
+        "description": "The Hatsune Miku re-suggestion was marked completed. The published design uses Scout movement, a Saxxy, Super Jump and a DCP-based ability system."
+      }
+    ]
   },
   {
     "date": "2026-05-04",
-    "type": "boss",
-    "status": "Completed",
     "title": "Cirno removal",
-    "summary": "The dedicated Cirno removal vote was marked completed in the Panda FF2 archive.",
-    "source": "https://www.panda-community.com/tags/ff2/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/tags/ff2/",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "removed",
+        "title": "Cirno",
+        "description": "The dedicated Cirno removal vote was marked completed in the Panda FF2 archive."
+      }
+    ]
   },
   {
     "date": "2026-04-04",
-    "type": "boss",
-    "status": "Completed",
     "title": "Foxy removed",
-    "summary": "The proposal to remove Foxy was marked completed. The thread described the boss as underplayed, underpowered and in need of a larger rework.",
-    "source": "https://www.panda-community.com/tags/freak-fortress-2/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/tags/freak-fortress-2/",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "removed",
+        "title": "Foxy",
+        "description": "The proposal to remove Foxy was marked completed. The thread described the boss as underplayed, underpowered and in need of a larger rework."
+      }
+    ]
   },
   {
     "date": "2026-03-19",
-    "type": "boss",
-    "status": "Completed",
     "title": "Saxton Hale reworked",
-    "summary": "Saxton Hale received a VScript VSH-inspired rework. The published rework replaces the old ability set and includes Brave Jump and Mighty Slam.",
-    "source": "https://www.panda-community.com/threads/ff2-saxton-hale-rework.37879/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/threads/ff2-saxton-hale-rework.37879/",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "changed",
+        "title": "Saxton Hale",
+        "description": "Saxton Hale received a VScript VSH-inspired rework. The published rework replaces the old ability set and includes Brave Jump and Mighty Slam."
+      }
+    ]
   },
   {
     "date": "2026-03-01",
-    "type": "gameplay",
-    "status": "Completed",
     "title": "Spells removed",
-    "summary": "The FF2 proposal to remove the recently enabled spell system was marked completed.",
-    "source": "https://www.panda-community.com/tags/freak-fortress-2/"
-  },
-  {
-    "date": "2025-10-02",
-    "type": "weapon",
     "status": "Completed",
-    "title": "Recent Vaccinator changes removed",
-    "summary": "The forum request to remove the recent Vaccinator rework was marked completed on October 2, 2025. Keep the sticky current-weapon thread as the authority for the exact live setup.",
-    "source": "https://www.panda-community.com/threads/ff2-remove-the-recent-vaccinator-changes.36734/"
+    "source": "https://www.panda-community.com/tags/freak-fortress-2/",
+    "changes": [
+      {
+        "type": "gameplay",
+        "action": "removed",
+        "title": "Spell system",
+        "description": "The FF2 proposal to remove the recently enabled spell system was marked completed."
+      }
+    ]
   },
   {
     "date": "2025-10-07",
-    "type": "boss",
-    "status": "Completed",
     "title": "Easter Bunny re-added",
-    "summary": "The proposal to bring Easter Bunny back to the FF2 boss roster was marked completed.",
-    "source": "https://www.panda-community.com/tags/freak-fortress-2/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/tags/freak-fortress-2/",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "added",
+        "title": "Easter Bunny",
+        "description": "The proposal to bring Easter Bunny back to the FF2 boss roster was marked completed."
+      }
+    ]
+  },
+  {
+    "date": "2025-10-02",
+    "title": "Recent Vaccinator changes removed",
+    "status": "Completed",
+    "source": "https://www.panda-community.com/threads/ff2-remove-the-recent-vaccinator-changes.36734/",
+    "changes": [
+      {
+        "type": "weapon",
+        "action": "changed",
+        "title": "Vaccinator",
+        "description": "The recent Vaccinator rework was reverted. The sticky Current FF2 Weapon Changes thread remains the authority for the exact live setup."
+      }
+    ]
   },
   {
     "date": "2025-08-31",
-    "type": "boss",
-    "status": "Completed",
     "title": "Blightcaller rework",
-    "summary": "A rework that brought back the older Blightcaller concept with revised abilities was marked completed.",
-    "source": "https://www.panda-community.com/tags/freak-fortress-2/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/tags/freak-fortress-2/",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "changed",
+        "title": "Blightcaller",
+        "description": "A rework that brought back the older Blightcaller concept with revised abilities was marked completed."
+      }
+    ]
   },
   {
     "date": "2024-12-28",
-    "type": "weapon",
-    "status": "Reference",
     "title": "Current FF2 Weapon Changes thread",
-    "summary": "Panda's sticky Current FF2 Weapon Changes thread is the canonical reference for live weapon modifications. This site should mirror that thread instead of treating old suggestions as current balance.",
-    "source": "https://www.panda-community.com/threads/current-ff2-weapon-changes.35005/"
+    "status": "Reference",
+    "source": "https://www.panda-community.com/threads/current-ff2-weapon-changes.35005/",
+    "changes": [
+      {
+        "type": "weapon",
+        "action": "reference",
+        "title": "Canonical weapon balance reference",
+        "description": "Panda's sticky Current FF2 Weapon Changes thread is the canonical reference for live weapon modifications. This site should mirror that thread instead of treating old suggestions as current balance."
+      }
+    ]
   },
   {
     "date": "2024-11-03",
-    "type": "gameplay",
-    "status": "Completed",
     "title": "Freak Fortress 2: Rewrite",
-    "summary": "Panda approved moving to FF2 Rewrite, bringing improved stability, a reworked boss-selection system, updated duo handling, a new HUD and integrated custom weapon-attribute support.",
-    "source": "https://www.panda-community.com/threads/ff2-freak-fortress-2-rewrite.34467/"
+    "status": "Completed",
+    "source": "https://www.panda-community.com/threads/ff2-freak-fortress-2-rewrite.34467/",
+    "changes": [
+      {
+        "type": "gameplay",
+        "action": "changed",
+        "title": "FF2 Rewrite migration",
+        "description": "Panda approved moving to FF2 Rewrite, bringing improved stability, a reworked boss-selection system, updated duo handling, a new HUD and integrated custom weapon-attribute support."
+      }
+    ]
   }
 ]
