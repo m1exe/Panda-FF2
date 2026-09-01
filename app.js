@@ -280,10 +280,6 @@ function describeWeaponAttribute(name, value, custom = false){
   if(key === "charge impact damage increased" && n !== null){
     return row("Shield charge impact damage", multiplierPercent(n), "", multiplierKind(n));
   }
-
-  if(key === "damage taken from bullets reduced" && n !== null){
-    return row("Bullet Resistance", multiplierPercent(n), "", multiplierKind(n));
-  }
   
   // ---------------------------------------------------------------
   // Damage taken / knockback
@@ -305,6 +301,15 @@ function describeWeaponAttribute(name, value, custom = false){
       n < 1 ? "positive" : n > 1 ? "negative" : ""
     );
   }
+
+  if(key === "dmg taken from bullets reduced" && n !== null){
+  return row(
+    "Bullet Resistance",
+    `${n < 1 ? "+" : "-"}${formatAttributeNumber(Math.abs(1 - n) * 100)}%`,
+    "",
+    n < 1 ? "positive" : n > 1 ? "negative" : ""
+  );
+}
 
   if(key === "rocket jump damage reduction" && n !== null){
     return row("Rocket-jump self damage", multiplierTaken(n), "", n < 1 ? "positive" : "negative");
