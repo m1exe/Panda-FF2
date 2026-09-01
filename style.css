@@ -1047,6 +1047,7 @@ main{
   color:var(--muted);
   font-size:.74rem;
   line-height:1.45;
+  white-space:pre-line;
 }
 
 .change-update-footer{
