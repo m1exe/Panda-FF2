@@ -1,5 +1,65 @@
 [
   {
+    "date": "2026-08-28",
+    "title": "General Update",
+    "status": "Completed",
+    "source": "Discord Post",
+    "changes": [
+      {
+        "type": "weapons",
+        "action": "changed",
+        "title": "Updated Weapon",
+        "description": "- Ullapool Caber:\n  - Removed: +100 damage to self"
+      },
+      {
+        "type": "general",
+        "action": "changed",
+        "title": "Disabled weapon pick-up",
+        "description": "Disabled the ability to pick up dropped weapons due to exploits."
+      }
+    ]
+  },
+  {
+    "date": "2026-08-20",
+    "title": "General Update",
+    "status": "Completed",
+    "source": "Discord Post",
+    "changes": [
+      {
+        "type": "general",
+        "action": "changed",
+        "title": "Updated Freak Fortress plugin",
+        "description": "Updated Freak Fortress 2: Rewrite to version 1.3.311"
+      },
+      {
+        "type": "gameplay",
+        "action": "changed",
+        "title": "Dome color updated",
+        "description": "Changed default dome color to green"
+      }
+    ]
+  },
+  {
+    "date": "2026-08-19",
+    "title": "General Update",
+    "status": "Completed",
+    "source": "Discord Post",
+    "changes": [
+      {
+        "type": "gameplay",
+        "action": "added",
+        "title": "New anti-delay system added",
+        "description": "- Added the dome, a new anti-delaying feature.\n- Starts closing in around the control point once it unlocks. Fully closes in after 1 minute and 30 seconds after the point unlocks.\n- Closes in at a radius of 1280 HU.\n- Damages anyone outside the dome, you take more damage the longer you are outside the dome.\n- Whichever team captures the control point, no longer takes damage outside the dome.\n- Control point now unlocks after 4 minutes and 30 seconds, instead of a certain amount of players alive.\n\n- Removed the previous line-of-sight anti-delaying system.\n- Reverted the change that disallowed players from getting queue points while having boss disabled."
+      },
+      {
+        "type": "weapons",
+        "action": "changed",
+        "title": "Weapons updated",
+        "description": "- Rocket Jumper / Sticky Jumper:\n  - Reduced bullet resistance (from 90% -> 75%)"
+      }
+    ]
+  },
+  {
     "date": "2026-08-18",
     "title": "General Update",
     "status": "Completed",
