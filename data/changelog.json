@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-08-18",
+    "title": "General Update",
+    "status": "Completed",
+    "source": "Discord Post",
+    "changes": [
+      {
+        "type": "boss",
+        "action": "changed",
+        "title": "Updated bosses",
+        "description": "All bosses can now see enemy health. \nNote: set tf_hud_target_id_disable_floating_health to 0 for it to work properly. \nReduced knockback resistance on some Heavy hales to 15%(from 50%).\nHales in question: Count Heavnich, Cuddly Heavy, Saxton Hale, Sexy Heavy. This is due to the Heavy class having hardcoded 50% knockback resistance by default in TF2.\n Lovebear:\n- Increased knockback resistance (from 35% -> 50%).\nThe Rock:\n- Reduced health per player."
+      },
+      {
+        "type": "weapons",
+        "action": "changed",
+        "title": "Weapons updated",
+        "description": "Rocket Jumper / Sticky Jumper:\n- Added: +90 bullet damage resistance on wearer.\nUllapool Caber:\n- Added: 100% damage to self;\n- Increased charge impact damage (from +400% -> +600%).\nWanga Prick:\n- Increased teleport distance (from 512 -> 1024);\n- Increased cloak consumption rate (from +50% -> +75%)\n- Removed health loss on teleport;\n- Removed health penalty"
+      }
+    ]
+  },
+  {
     "date": "2026-08-17",
     "title": "Map Rotation Update",
     "status": "Completed",
