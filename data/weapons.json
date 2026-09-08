@@ -552,7 +552,7 @@
           "Projectile speed increased": "1.5",
           "fire rate bonus HIDDEN": "0.1",
           "crits_become_minicrits": "1",
-          "blast dmg to self increased": "1.25"
+          "blast dmg to self increased": "1.2"
         },
         "custom": {
           "knockback modifier": "0.75"
