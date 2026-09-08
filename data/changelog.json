@@ -8,7 +8,7 @@
       {
         "type": "boss",
         "action": "added",
-        "title": "Added Rage consumption on Saxton's abilities",
+        "title": "Rage consumption on Saxton's abilities",
         "description": "- Charge Dash costs 10-20% rage, depending on the charge amount.\n- Mighty Slam now costs 20% rage. (weighdown requires no rage)"
       },
       {
