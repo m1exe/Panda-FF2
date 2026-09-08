@@ -21,7 +21,7 @@
         "type": "maps",
         "action": "added",
         "title": "Added, updated & removed maps",
-        "description": "- Added maps:\n  - vsh_frogworks_b5\n  - vsh_mountanbash_v4_d\n  - vsh_nucleus(HAS BEEN REMOVED, IT WASN'T MEANT TO BE ADDED)\n  - vsh_newyork\n\n- Updated maps:\n  - vsh_granturks_v5_03_panda -> vsh_granturks_v5_03_panda2\n  - vsh_north_mountain_pb_panda -> vsh_north_mountain_pb_panda2\n  - vsh_oh_multimaps_b1_panda3 -> vsh_oh_multimaps_b1_panda4\n - Removed maps:\n  - vsh_blockpost_tt22\n  - vsh_chemical_v1\n  - vsh_jealo_rc1_fixed\n  - vsh_leak\n  - vsh_limbo_uk_b2_panda\n  - vsh_movie_night_v2"
+        "description": "- Added maps:\n  - vsh_frogworks_b5\n  - vsh_mountanbash_v4_d\n  - vsh_nucleus(HAS BEEN REMOVED, IT WASN'T MEANT TO BE ADDED)\n  - vsh_newyork\n\n- Updated maps:\n  - vsh_granturks_v5_03_panda -> vsh_granturks_v5_03_panda2\n  - vsh_north_mountain_pb_panda -> vsh_north_mountain_pb_panda2\n  - vsh_oh_multimaps_b1_panda3 -> vsh_oh_multimaps_b1_panda4\n\n - Removed maps:\n  - vsh_blockpost_tt22\n  - vsh_chemical_v1\n  - vsh_jealo_rc1_fixed\n  - vsh_leak\n  - vsh_limbo_uk_b2_panda\n  - vsh_movie_night_v2"
       }
     ]
   },
