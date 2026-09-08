@@ -546,12 +546,13 @@
         "attributes": {
           "damage penalty": "0.8",
           "clip size bonus": "3.75",
-          "maxammo primary increased": "3",
+          "maxammo primary increased": "6",
           "Reload time decreased": "0.35",
           "Blast radius decreased": "0.7",
           "Projectile speed increased": "1.5",
           "fire rate bonus HIDDEN": "0.1",
-          "crits_become_minicrits": "1"
+          "crits_become_minicrits": "1",
+          "blast dmg to self increased": "0.8"
         },
         "custom": {
           "knockback modifier": "0.75"
@@ -812,7 +813,9 @@
     "ff2Changes": [
       {
         "attributes": {
-          "increase buff duration": "1.5"
+          "increase buff duration": "1.5",
+          "max health additive bonus": "20",
+          "health regen": "4"
         },
         "source": "item",
         "sourceKey": "129 1001",
@@ -3428,7 +3431,7 @@
         },
         "custom": {
           "backstab damage": "1000",
-          "teleport on backstab": "1"
+          "teleport on backstab": "2"
         },
         "source": "item",
         "sourceKey": "574",
