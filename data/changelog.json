@@ -1,5 +1,37 @@
 [
 {
+    "date": "2026-09-16",
+    "title": "Updated maps, gameplay changes & misc changes",
+    "status": "Completed",
+    "source": "Discord Post",
+    "changes": [
+      {
+        "type": "maps",
+        "action": "changed",
+        "title": "vsh_minegay & vsh_2fortdesk_nec3_k",
+        "description": "- Updated:\n  - vsh_minegay_reworked_v2 to fix being able to survive in the lava with Cow Mangler\n- vsh_2fortdesk_nec3_k to remove the music from starting cameras"
+      },
+      {
+        "type": "gameplay",
+        "action": "changed",
+        "title": "Time limit, dome & more",
+        "description": "- General:\n- Increased map time limit to 35 minutes (from 30)\n- Removed the screen fade effect when near the dome/outside it\n- Removed control point locking after using /ff2respawn\n- Reverted the fix that removed weapon drops. Only some weapons can't be dropped now (e.g Frying Pan for the sniper)\n- Fixed being able to use teleport during Energineer's laser (was fixed a week ago, forgot to mention it)"
+      },
+      {
+        "type": "bosses",
+        "action": "changed",
+        "title": "Captain Rattleton & others",
+        "description": "- Captain Rattleton:\n- Replaced the plugin used for Pirate Elite summon\n- Due to this it will now summon a random player instead of the last one killed\n\n- HHH Jr., Ninja Spy, Vagineer, Mr. Meeseeks:\n- Added models with fixed ragdolls. (courtesy of m1.exe)\n- Mr.Meeseeks model contains fixed animations & uber skin."
+      },
+      {
+        "type": "weapons",
+        "action": "changed",
+        "title": "L'Etranger",
+        "description": "- L'Etranger:\n- Added minicrits\n- Added Critical damage is affected by range\n- Added -40% knockback"
+      }
+    ]
+  },
+{
     "date": "2026-09-05",
     "title": "New maps & Stats changes",
     "status": "Completed",
