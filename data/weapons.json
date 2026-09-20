@@ -3625,7 +3625,8 @@
       {
         "attributes": {
           "damage penalty": "1",
-          "damage bonus": "1.15"
+          "damage bonus": "1.15",
+          "crit_dmg_falloff": "1"
         },
         "source": "item",
         "sourceKey": "224",
